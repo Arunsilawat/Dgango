@@ -2,6 +2,11 @@
 <h1>If Else </h1>
 <hr>
 {% if key1 %}
+   {% if key1.name == 10 %}
+     {{key1}}
+   {% else %}
+     <h1>Smile</h1>
+{% endif %}
 <h1>{{key1}}</h1>
 {% elif key2 %}
 <h1>{{key2}}</h1>
@@ -12,3 +17,4 @@
 {% else %}
 <h1>Welcome</h1>
 {% endif %}
+<hr>
