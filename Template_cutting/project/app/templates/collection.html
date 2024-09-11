@@ -1,0 +1,33 @@
+<!-- <h1>{{data}}</h1>
+<hr>
+{% if data %}
+{% for i in data %}
+     {{i}} <hr>
+     
+{% endfor%}
+{% endif%}
+<hr> -->
+
+{% if data %}
+<table border="2px solid black" style="width: 100%" >
+    <thead>
+        <tr>
+            <td>S No</td>
+            <td>NAME</td>
+            <td>AGE</td>
+            <td>CITY</td>
+        </tr>
+    </thead>
+    {% for i in data %}
+     <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{i.name}}</td>
+        <td>{{i.age}}</td>
+        <td>{{i.city}}</td>
+     </tr>
+     
+    {% endfor%}
+</table>
+{% else %}
+<h1>Hello...</h1>
+{% endif%}
