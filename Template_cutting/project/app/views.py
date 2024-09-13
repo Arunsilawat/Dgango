@@ -28,3 +28,9 @@ def collection(request):
           {'name':'Aman','age':20,'city':'Indore'}
           ]
     return render(request,'collection.html',{'data':data})
+def register(request):
+    return render(request,'register.html')
+def login(request):
+    return render(request,'login.html')
+def registerdata(register):
+    return render(request,'registerdata')
