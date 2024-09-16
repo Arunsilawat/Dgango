@@ -35,6 +35,15 @@ def login(request):
 def registerdata(request):
     print(request.method)
     print(request.POST)
-    # return render(request,'registerdata')
-# def filter(request):
-#     return render(request,'filter')
+
+    cstoken=request.POST.get('csrfmiddlewaretoken')
+    name=request.POST.get('nm')
+    email=request.POST.get('em')
+    contact=request.POST.get('con')
+    password=request.POST.get('pass')
+
+    print(cstoken)
+    print(name)
+    print(email)
+    print(contact)
+    print(password)
