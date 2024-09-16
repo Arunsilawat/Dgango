@@ -32,5 +32,9 @@ def register(request):
     return render(request,'register.html')
 def login(request):
     return render(request,'login.html')
-def registerdata(register):
-    return render(request,'registerdata')
+def registerdata(request):
+    print(request.method)
+    print(request.POST)
+    # return render(request,'registerdata')
+# def filter(request):
+#     return render(request,'filter')
