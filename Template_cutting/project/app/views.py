@@ -30,8 +30,10 @@ def collection(request):
     return render(request,'collection.html',{'data':data})
 def register(request):
     return render(request,'register.html')
+   
 def login(request):
     return render(request,'login.html')
+
 def registerdata(request):
     print(request.method)
     print(request.POST)
@@ -47,3 +49,20 @@ def registerdata(request):
     print(email)
     print(contact)
     print(password)
+    response=render(request,'login.html')
+    response.set_cookie('name',name)
+    response.set_cookie('email',email)
+    response.set_cookie('contact',contact)
+    response.set_cookie('password',password)
+    return response
+
+def userlogin(request):
+    if request.method=='POST':
+        email=request.POST.get('email')
+        password=request.POST.get('password')
+        print(email,password)
+        
+
+        
+    
+    
