@@ -88,13 +88,13 @@ def registerdata(request):
 #         password=request.POST.get('password')
 #         print(email,password)
     
-def logout(request):
-    response=render(request,'home.html')
-    response.delete_cookie('name')
-    response.delete_cookie('email')
-    response.delete_cookie('contact')
-    response.delete_cookie('password')
-    return response
+# def logout(request):
+#     response=render(request,'home.html')
+#     response.delete_cookie('name')
+#     response.delete_cookie('email')
+#     response.delete_cookie('contact')
+#     response.delete_cookie('password')
+#     return response
 # ---------------------------end cookies---------------------------------------------------
 def register(request):
     if request.method=='POST':
@@ -118,20 +118,29 @@ def login(request):
         data=request.session.get('data')
         print(data)
         print(data["name"],data["email"],data["contact"],data["password"])
-        # if email1==email:
-        #     if password1==password:
-        #         data={'name':name,
-        #               'email':email,
-        #               'contact':contact,
-        #               'password':password
-        #               }
-        #         return render(request,'dashboard.html',data)
-        #     else:
-        #         msg='email id and password not matched'
-        #         return render(request,'login.html',{'msg':msg})
+        if email1==data["email"]:
+            if password1==data["password"]:
+                data={'name':data["name"],
+                      'email':data["email"],
+                      'contact':data["contact"],
+                      'password':data["password"]
+                      }
+                return render(request,'dashboard.html',data)
+            else:
+                msg='email id and password not matched'
+                return render(request,'login.html',{'msg':msg})
  
-        # else:
-        #     msg='email id not register'
-        #     return render(request,'login.html',{'msg':msg})
+        else:
+            msg='email id not register'
+            return render(request,'login.html',{'msg':msg})
     else:
         return render(request,'login.html')
+def logout(request):
+    print(request.session)
+    if request.session:
+        # del request.session['email']
+        # del request.session['name']
+        # del request.session['contact']
+        # del request.session['password']
+        request.session.flush()
+        return render(request,'home.html')
