@@ -4,8 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
 </head>
 <body>
-    <h1>Arun</h1>
+
+    <div class="alert alert-success">
+        <strong>{{msg}}</strong> 
+    </div>
+   <center>
+    <h1>------------------ Welcome --------------------</h1>
+    <a href="{% url 'register' %}"><button>Registration</button></a>
+    <hr>
+    <a href="{% url 'login' %}"><button>Login</button></a>
+   </center>
 </body>
 </html>
