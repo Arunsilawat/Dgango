@@ -8,7 +8,6 @@
 <body>
     <h1 align="center">----------Login Page-----------</h1>
     <div align="center">
-    <h1>{{msg}}</h1>
     <form action="{% url 'login' %}" method="post">
           {% csrf_token %}
             <input type="text" name="email" id=""placeholder="Enter Your Email"><br><br>
