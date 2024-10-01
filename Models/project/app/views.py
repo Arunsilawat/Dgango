@@ -29,5 +29,36 @@ def register(request):
     else:
      return render(request,'register.html')
 
+# def login(request):
+#     return render(request,'login.html')
 def login(request):
-    return render(request,'login.html')
+    if request.method=="POST":
+        email=request.POST['email']
+        password=request.POST['password']
+        print(email,password)
+        use=Student.objects.filter(stu_email=email)
+        print(use)
+        if use:
+            use_data=Student.objects.get(stu_email=email)
+            print(use_data)
+            email1=use_data.stu_email
+            name1=use_data.stu_name
+            contact1=use_data.stu_contact 
+            password1=use_data.stu_password
+            print(email1,name1,contact1,password1)
+            if password1==password:
+                data={
+                    'nm':name1,
+                    'em':email1,
+                    'con':email1,
+                    'pas':password1
+                }
+                return render(request,'dashboard.html',data)
+            else:
+                msg="Password Not Match"
+                return render(request,'login.html',{'msg':msg})
+        else:
+            msg="Email Id not Register"
+            return render(request,'login.html',{'msg':msg})        
+    else:
+        return render(request,'login.html')
