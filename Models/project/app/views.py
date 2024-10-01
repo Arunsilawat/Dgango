@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from.models import Student
+
 # Create your views here.
 def home(request):
     return render(request,'home.html')
@@ -62,3 +63,46 @@ def login(request):
             return render(request,'login.html',{'msg':msg})        
     else:
         return render(request,'login.html')
+def first(request):
+    data=Student.objects.first()
+    print(data)
+    print(data.stu_name,data.stu_email,data.stu_contact,data.stu_password)
+    data1={
+        'nm':data.stu_name,
+        'em':data.stu_email,
+        'con':data.stu_contact,
+        'pas':data.stu_password
+        }
+
+    return render(request,'dashboard.html',data1)
+def last(request):
+    data=Student.objects.last()
+    print(data.stu_name,data.stu_email,data.stu_contact,data.stu_password)
+    data1={
+    'nm':data.stu_name,
+    'em':data.stu_email,
+    'con':data.stu_contact,
+    'pas':data.stu_password
+    }
+    return render(request,'dashboard.html',data1)
+def latest(request):
+    data=Student.objects.latest("id")
+    print(data.stu_name,data.stu_email,data.stu_contact,data.stu_password)
+    data1={
+    'nm':data.stu_name,
+    'em':data.stu_email,
+    'con':data.stu_contact,
+    'pas':data.stu_password
+    }
+    return render(request,'dashboard.html',data1) 
+def earliest(request):
+    data=Student.objects.earliest("id")
+    print(data.stu_name,data.stu_email,data.stu_contact,data.stu_password)
+    data1={
+    # 'id':data.stu_id,
+    'nm':data.stu_name,
+    'em':data.stu_email,
+    'con':data.stu_contact,
+    'pas':data.stu_password
+    }
+    return render(request,'dashboard.html',data1)
