@@ -50,7 +50,7 @@ def login(request):
                 data={
                     'nm':name1,
                     'em':email1,
-                    'con':email1,
+                    'con':contact1,
                     'pas':password1
                 }
                 return render(request,'dashboard.html',data)
