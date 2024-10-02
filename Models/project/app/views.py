@@ -106,3 +106,14 @@ def earliest(request):
     'pas':data.stu_password
     }
     return render(request,'dashboard.html',data1)
+
+def all(request):
+    data=Student.objects.all()
+    data1=data.values()
+    data2 = {
+        "data":list(data1)
+    }
+    # print(data2)
+    # print(type(data2))
+
+    return render(request,'dashboard.html',{'data':data1})

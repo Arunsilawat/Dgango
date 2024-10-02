@@ -9,4 +9,5 @@ urlpatterns = [
     path('last/', views.last, name='last'),
     path('latest/',views.latest, name='latest'),
     path('earliest/',views.earliest, name='earliest'),
-]
+    path('all/',views.all, name='all'),
+ ]
