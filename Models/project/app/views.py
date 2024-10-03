@@ -106,14 +106,44 @@ def earliest(request):
     'pas':data.stu_password
     }
     return render(request,'dashboard.html',data1)
+# ------------------------------multiple return-----------------------------------------------
 
 def all(request):
     data=Student.objects.all()
     data1=data.values()
-    data2 = {
-        "data":list(data1)
-    }
-    # print(data2)
-    # print(type(data2))
-
     return render(request,'dashboard.html',{'data':data1})
+
+def myfilter(request):
+    data=Student.objects.filter(stu_name="Arun")
+    data1=data.values()
+    return render(request,'dashboard.html',{'data':data1})
+
+def myexclude(request):
+    data=Student.objects.exclude(stu_name="Arun")
+    data1=data.values()
+    return render(request,'dashboard.html',{'data':data1})
+
+def myassending(request):
+    data=Student.objects.order_by("stu_name")  #  .reverse()  se bhi dissending de dega
+    data1=data.values()
+    return render(request,'dashboard.html',{'data':data1})
+
+def mydissending(request):
+    data=Student.objects.order_by("-stu_name")
+    data1=data.values()
+    return render(request,'dashboard.html',{'data':data1})
+
+def myrendom(request):
+    data=Student.objects.order_by("?")
+    data1=data.values()
+    return render(request,'dashboard.html',{'data':data1})
+
+def myslice(request):
+    data=Student.objects.all()[5::]
+    data1=data
+    return render(request,'dashboard.html',{'data':data1})
+
+def myreverse(request):
+    data=Student.objects.order_by("-id")[:5:]
+    data1=data.values()
+    return render(request,'dashboard.html',{'data':data})

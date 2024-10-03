@@ -10,4 +10,11 @@ urlpatterns = [
     path('latest/',views.latest, name='latest'),
     path('earliest/',views.earliest, name='earliest'),
     path('all/',views.all, name='all'),
+    path('myfilter/',views.myfilter, name='myfilter'),
+    path('myexclude/',views.myexclude, name='myexclude'),
+    path('myassending/',views.myassending, name='myassending'),
+    path('mydissending/',views.mydissending, name='mydissending'),
+    path('myrendom/',views.myrendom, name='myrendom'),
+    path('myslice/',views.myslice, name='myslice'),
+    path('myreverse/',views.myreverse, name='myreverse'),
  ]

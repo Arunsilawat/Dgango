@@ -25,6 +25,12 @@
    <a href="{% url 'latest' %}"><button>Latest</button></a>
    <a href="{% url 'earliest' %}"><button>Earliest</button></a>
    <a href="{% url 'all' %}"><button>All Data</button></a>
-   {% comment %} <a href="{% url 'filter' %}"><button>Filter</button></a> {% endcomment %}
+   <a href="{% url 'myfilter' %}"><button>Filter</button></a>
+   <a href="{% url 'myexclude' %}"><button>Exclude</button></a>
+   <a href="{% url 'myassending' %}"><button>Assending</button></a>
+   <a href="{% url 'mydissending' %}"><button>Dissending</button></a>
+   <a href="{% url 'myrendom' %}"><button>Rendom</button></a>
+   <a href="{% url 'myslice' %}"><button>Slice</button></a>
+   <a href="{% url 'myreverse' %}"><button>Reverse</button></a>
 </body>
 </html>
