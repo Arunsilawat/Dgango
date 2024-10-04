@@ -150,12 +150,26 @@ def myreverse(request):
     return render(request,'dashboard.html',{'data':data})
 
 # ----------------------------------------------------------------------
+# def query(request):
+#     if request.method=="POST":
+#         name1=request.POST.get('name')
+#         email1=request.POST.get('email')
+#         contact1=request.POST.get('contact')
+#         query=request.POST.get('query')
+#         Query.objects.create(name=name1,email=email1,contact=contact,query=query)
+#         data=Student.objects.get(stu_email=email1)
+#         return render(request,'display.html',{'data':data})
+
 def query(request):
-    if request.method=="POST":
+    if request.method=='POST':
         name=request.POST.get('name')
         email=request.POST.get('email')
         contact=request.POST.get('contact')
         query=request.POST.get('query')
-        Query.objects.create(name=name,email=email,contact=contact,query=query)
-        data=Student.objects.get(stu_email=email1)
-    return render(request,'display.html',{'data':data})
+        Query.objects.create(stu_name=name,stu_email=email,stu_contact=contact,stu_query=query)
+        msg=" Successfully"
+        return render(request,'display.html',{'msg':msg})
+    else:
+        msg=" not success"
+        return render(request,'register.html',{'msg':msg})
+    

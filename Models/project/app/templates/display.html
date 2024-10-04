@@ -14,7 +14,7 @@
 
 <body>
     <h1 style="padding-left: 990px;">Welcome {{nm}}</h1>
-
+    {{msg}}
     <div id="main">
         <form action="{% url 'query' %}" method="post">
         {% csrf_token %}
