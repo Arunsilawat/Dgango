@@ -18,4 +18,5 @@ urlpatterns = [
     path('myslice/',views.myslice, name='myslice'),
     path('myreverse/',views.myreverse, name='myreverse'),
     path('query/',views.query, name='query'),
+    # path('delete/',views.delete, name='delete'),
  ]

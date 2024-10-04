@@ -168,8 +168,15 @@ def query(request):
         query=request.POST.get('query')
         Query.objects.create(stu_name=name,stu_email=email,stu_contact=contact,stu_query=query)
         msg=" Successfully"
-        return render(request,'display.html',{'msg':msg})
+        data=Query.objects.all()
+        data1=data.values()
+        user=Student.objects.get(stu_email=email)
+        return render(request,'display.html',{'data':data1})
     else:
         msg=" not success"
         return render(request,'register.html',{'msg':msg})
+# def delete(request):
+#     data=Query.objects.get(id=4).delete()
+#     return render(request,'display.html',{'data':data})
     
+  
