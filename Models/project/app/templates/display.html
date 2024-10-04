@@ -6,8 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        #main{
+        #main {
             display: flex;
+        }
+
+        #ipt {
+            width: 30%;
+            height: 25px;
         }
     </style>
 </head>
@@ -15,44 +20,19 @@
 <body>
     <h1 style="padding-left: 990px;">Welcome {{nm}}</h1>
     {{msg}}
-    <div id="main">
-        <form action="{% url 'query' %}" method="post">
+    <form action="{% url 'query' %}" method="post">
         {% csrf_token %}
-            Name : <input type="text" name="name" value="{{nm}}" disabled ><br><br>
-            Email : <input type="text" name="email" value="{{em}}" disabled><br><br>
-            Contact : <input type="text" name="contact" value="{{con}}" disabled><br><br>
-            Query : <input type="text" name="query"><br><br>
-            <a href="{% url 'home' %}"><button>Logout</button></a>
-            <a href=""><button>Submit</button></a>
-        </form><br><br>
+        Name    : <input type="text" name="name" value="{{nm}}" readonly id="ipt"><br><br>
+        Email   : <input type="text" name="email" value="{{em}}" readonly id="ipt"><br><br>
+        Contact : <input type="text" name="contact" value="{{con}}" readonly id="ipt"><br><br>
+        Query   : <input type="text" name="query" id="ipt"><br><br>
+        <a href="{% url 'home' %}"><button>Logout</button></a>
+        <a href=""><button>Submit</button></a>
+    </form><br><br>
 
-        <!-- ----------------------------Table----------------------------------- -->
+    <!-- ----------------------------Table----------------------------------- -->
 
-        <div class="container"></div>
-        <table class="table" style="border: 2px solid black;">
-            <thead>
-                <tr>
-                    <th style="border: 2px solid black;">ID </th>
-                    <th style="border: 2px solid black;">Name</th>
-                    <th style="border: 2px solid black;">Email</th>
-                    <th style="border: 2px solid black;">Contact</th>
-                    <th style="border: 2px solid black;">Password</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for i in data %}
-                <tr>
-                    <td style="border: 2px solid black;">{{i.id}}</td>
-                    <td style="border: 2px solid black;">{{i.stu_name}}</td>
-                    <td style="border: 2px solid black;">{{i.stu_email}}</td>
-                    <td style="border: 2px solid black;">{{i.stu_contact}}</td>
-                    <td style="border: 2px solid black;">{{i.stu_password}}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div> <br>
-    </div>
+
 </body>
 
 </html>
