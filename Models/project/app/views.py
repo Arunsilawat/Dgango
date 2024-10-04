@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from.models import Student
+from.models import Query
 
 # Create your views here.
 def home(request):
@@ -54,7 +55,7 @@ def login(request):
                     'con':contact1,
                     'pas':password1
                 }
-                return render(request,'dashboard.html',data)
+                return render(request,'display.html',data)
             else:
                 msg="Password Not Match"
                 return render(request,'login.html',{'msg':msg})
@@ -147,3 +148,14 @@ def myreverse(request):
     data=Student.objects.order_by("-id")[:5:]
     data1=data.values()
     return render(request,'dashboard.html',{'data':data})
+
+# ----------------------------------------------------------------------
+def query(request):
+    if request.method=="POST":
+        name=request.POST.get('name')
+        email=request.POST.get('email')
+        contact=request.POST.get('contact')
+        query=request.POST.get('query')
+        Query.objects.create(name=name,email=email,contact=contact,query=query)
+        data=Student.objects.get(stu_email=email1)
+    return render(request,'display.html',{'data':data})

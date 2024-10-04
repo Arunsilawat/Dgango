@@ -17,4 +17,5 @@ urlpatterns = [
     path('myrendom/',views.myrendom, name='myrendom'),
     path('myslice/',views.myslice, name='myslice'),
     path('myreverse/',views.myreverse, name='myreverse'),
+    path('query/',views.query, name='query'),
  ]
