@@ -37,17 +37,17 @@ def login(request):
     if request.method=="POST":
         email=request.POST['email']
         password=request.POST['password']
-        print(email,password)
+        # print(email,password)
         use=Student.objects.filter(stu_email=email)
-        print(use)
+        # print(use)
         if use:
             use_data=Student.objects.get(stu_email=email)
-            print(use_data)
+            # print(use_data)
             email1=use_data.stu_email
             name1=use_data.stu_name
             contact1=use_data.stu_contact 
             password1=use_data.stu_password
-            print(email1,name1,contact1,password1)
+            # print(email1,name1,contact1,password1)
             if password1==password:
                 data={
                     'nm':name1,
@@ -55,7 +55,7 @@ def login(request):
                     'con':contact1,
                     'pas':password1
                 }
-                return render(request,'display.html',data)
+                return render(request,'display.html',{'user':data})
             else:
                 msg="Password Not Match"
                 return render(request,'login.html',{'msg':msg})
@@ -66,8 +66,8 @@ def login(request):
         return render(request,'login.html')
 def first(request):
     data=Student.objects.first()
-    print(data)
-    print(data.stu_name,data.stu_email,data.stu_contact,data.stu_password)
+    # print(data)
+    # print(data.stu_name,data.stu_email,data.stu_contact,data.stu_password)
     data1={
         'nm':data.stu_name,
         'em':data.stu_email,
@@ -78,7 +78,7 @@ def first(request):
     return render(request,'dashboard.html',data1)
 def last(request):
     data=Student.objects.last()
-    print(data.stu_name,data.stu_email,data.stu_contact,data.stu_password)
+    # print(data.stu_name,data.stu_email,data.stu_contact,data.stu_password)
     data1={
     'nm':data.stu_name,
     'em':data.stu_email,
@@ -168,15 +168,43 @@ def query(request):
         query=request.POST.get('query')
         Query.objects.create(stu_name=name,stu_email=email,stu_contact=contact,stu_query=query)
         msg=" Successfully"
-        data=Query.objects.all()
-        data1=data.values()
-        user=Student.objects.get(stu_email=email)
-        return render(request,'display.html',{'data':data1})
+        data1=Query.objects.filter(stu_email=email)
+        # data1=data.values()
+        use_data=Student.objects.get(stu_email=email)
+        email1=use_data.stu_email
+        name1=use_data.stu_name
+        contact1=use_data.stu_contact 
+        password1=use_data.stu_password
+        data={
+            'nm':name1,
+            'em':email1,
+            'con':contact1,
+            'pas':password1
+            }
+        return render(request,'display.html',{'data':data1,'user':data})
     else:
         msg=" not success"
         return render(request,'register.html',{'msg':msg})
-# def delete(request):
-#     data=Query.objects.get(id=4).delete()
-#     return render(request,'display.html',{'data':data})
+def delete(request,pk):
+    data=Query.objects.get(id=pk)
+    email=data.stu_email
+    data.delete()
+    alldata=Query.objects.filter(stu_email=email)
+    use_data=Student.objects.get(stu_email=email)
+    email1=use_data.stu_email
+    name1=use_data.stu_name
+    contact1=use_data.stu_contact 
+    password1=use_data.stu_password
+    data={
+        'nm':name1,
+        'em':email1,
+        'con':contact1,
+        'pas':password1
+        }
+    return render(request,'display.html',{'data':alldata,'user':data})
     
+def logout(request):
+    return render(request,'home.html')
   
+            
+            
