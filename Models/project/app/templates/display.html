@@ -28,15 +28,27 @@
     <h1 style="padding-left: 990px;">Welcome {{user.nm}}</h1>
     
     <div id="main">
+        {% if key2 %}
+        <form action="{% url 'query' %}" method="post" style="width: 50%;">
+            {% csrf_token %}
+            Name : <input type="text" name="name" value="{{user.nm}}"   id="ipt"><br><br>
+            Email : <input type="text" name="email" value="{{user.em}}"  id="ipt"><br><br>
+            Contact : <input type="text" name="contact" value="{{user.con}}"  id="ipt"><br><br>
+            Query : <input type="text" name="query" value="{{user.query}}" id="ipt" ><br><br>
+            <a href="{% url 'logout' %}"><button id="btn">Logout</button></a>
+            <button type="submit">Update</button>
+        </form><br><br>
+        {% else %}
         <form action="{% url 'query' %}" method="post" style="width: 50%;">
             {% csrf_token %}
             Name : <input type="text" name="name" value="{{user.nm}}"  readonly id="ipt"><br><br>
             Email : <input type="text" name="email" value="{{user.em}}" readonly id="ipt"><br><br>
             Contact : <input type="text" name="contact" value="{{user.con}}" readonly id="ipt"><br><br>
-            Query : <input type="text" name="query" id="ipt"><br><br>
+            Query : <input type="text" name="query" id="ipt" required><br><br>
             <a href="{% url 'logout' %}"><button id="btn">Logout</button></a>
             <button type="submit">Submit</button>
         </form><br><br>
+        {% endif %}
         <!-- ----------------------------Table----------------------------------- -->
          
         <div class="container" style="width: 50%;">
@@ -63,7 +75,7 @@
                         <td style="border: 2px solid black;">{{i.stu_contact}}</td>
                         <td style="border: 2px solid black;">{{i.stu_query}}</td>
                         <td style="border: 2px solid black;"><a href="{% url 'delete' pk=i.id %}"><button id="btn">Delete</button></a></td>
-                        <td style="border: 2px solid black;"><button id="btn1">Edit</button></td>
+                        <td style="border: 2px solid black;"><a href="{% url 'edit' pk=i.id %}"><button id="btn1">Edit</button></a></td>
                     </tr>
                     {% endfor %}
                 </tbody>

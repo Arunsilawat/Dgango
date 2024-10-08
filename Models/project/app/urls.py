@@ -19,5 +19,6 @@ urlpatterns = [
     path('myreverse/',views.myreverse, name='myreverse'),
     path('query/',views.query, name='query'),
     path('delete/<int:pk>',views.delete, name='delete'),
-    path('logout',views.logout, name='logout'),
+    path('logout/',views.logout, name='logout'),
+    path('edit/<int:pk>',views.edit, name='edit'),
  ]

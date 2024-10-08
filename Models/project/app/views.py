@@ -207,4 +207,30 @@ def logout(request):
     return render(request,'home.html')
   
             
-            
+def edit(request,pk):
+    data=Query.objects.get(id=pk)
+    name=data.stu_name
+    email=data.stu_email
+    contact=data.stu_contact
+    query=data.stu_query
+    
+    alldata=Query.objects.filter(stu_email=email)
+    use_data=Student.objects.get(stu_email=email)
+
+    email1=use_data.stu_email
+    name1=use_data.stu_name
+    contact1=use_data.stu_contact 
+    password1=use_data.stu_password
+    data={
+        'nm':name1,
+        'em':email1,
+        'con':contact1,
+        'query':query
+        }
+    edit_detail={
+        'nm':name1,
+        'em':email1,
+        'con':contact1,
+        'query':query
+    }
+    return render(request,'display.html',{'data':alldata,'user':data,'key2':edit_detail})
