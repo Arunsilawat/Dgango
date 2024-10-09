@@ -29,7 +29,7 @@
     
     <div id="main">
         {% if key2 %}
-        <form action="{% url 'query' %}" method="post" style="width: 50%;">
+        <form action="{% url 'update' pk=user.myid %}" method="post" style="width: 50%;">
             {% csrf_token %}
             Name : <input type="text" name="name" value="{{user.nm}}"   id="ipt"><br><br>
             Email : <input type="text" name="email" value="{{user.em}}"  id="ipt"><br><br>

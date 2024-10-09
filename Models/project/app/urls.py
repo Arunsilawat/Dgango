@@ -21,4 +21,5 @@ urlpatterns = [
     path('delete/<int:pk>',views.delete, name='delete'),
     path('logout/',views.logout, name='logout'),
     path('edit/<int:pk>',views.edit, name='edit'),
+    path('update/<int:pk>',views.update, name='update'),
  ]

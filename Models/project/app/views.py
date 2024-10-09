@@ -206,9 +206,9 @@ def delete(request,pk):
 def logout(request):
     return render(request,'home.html')
   
-            
 def edit(request,pk):
     data=Query.objects.get(id=pk)
+    myid=data.id
     name=data.stu_name
     email=data.stu_email
     contact=data.stu_contact
@@ -222,15 +222,44 @@ def edit(request,pk):
     contact1=use_data.stu_contact 
     password1=use_data.stu_password
     data={
+        'myid':myid,
         'nm':name1,
         'em':email1,
         'con':contact1,
         'query':query
         }
     edit_detail={
-        'nm':name1,
-        'em':email1,
-        'con':contact1,
+        'nm':name,
+        'em':email,
+        'con':contact,
         'query':query
     }
     return render(request,'display.html',{'data':alldata,'user':data,'key2':edit_detail})
+def update(request,pk):
+    if request.method=='POST':
+        old_data=Query.objects.get(id=pk)
+        name=request.POST.get("name")
+        email=request.POST.get("email")
+        contact=request.POST.get("contact")
+        query=request.POST.get("query")
+
+        old_data.stu_name=name 
+        old_data.stu_email=email
+        old_data.stu_contact=contact
+        old_data.stu_query=query
+        old_data.save()
+
+        alldata=Query.objects.filter(stu_email=email)
+        use_data=Student.objects.get(stu_email=email)
+
+        email1=use_data.stu_email
+        name1=use_data.stu_name
+        contact1=use_data.stu_contact 
+        password1=use_data.stu_password
+        data={
+            'nm':name1,
+            'em':email1,
+            'con':contact1,
+            'query':query
+            }
+        return render(request,'display.html',{'data':alldata,'user':data})
