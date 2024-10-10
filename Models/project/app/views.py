@@ -185,24 +185,40 @@ def query(request):
     else:
         msg=" not success"
         return render(request,'register.html',{'msg':msg})
-def delete(request,pk):
-    data=Query.objects.get(id=pk)
-    email=data.stu_email
-    data.delete()
-    alldata=Query.objects.filter(stu_email=email)
-    use_data=Student.objects.get(stu_email=email)
-    email1=use_data.stu_email
-    name1=use_data.stu_name
-    contact1=use_data.stu_contact 
-    password1=use_data.stu_password
-    data={
-        'nm':name1,
-        'em':email1,
-        'con':contact1,
-        'pas':password1
-        }
-    return render(request,'display.html',{'data':alldata,'user':data})
-    
+def delete(request,pk,em):
+    data=Query.objects.filter(id=pk)
+    if data:
+        data=Query.objects.get(id=pk)
+        email=data.stu_email
+        data.delete()
+        alldata=Query.objects.filter(stu_email=email)
+        use_data=Student.objects.get(stu_email=email)
+        email1=use_data.stu_email
+        name1=use_data.stu_name
+        contact1=use_data.stu_contact 
+        password1=use_data.stu_password
+        data={
+            'nm':name1,
+            'em':email1,
+            'con':contact1,
+            'pas':password1
+            }
+        return render(request,'display.html',{'data':alldata,'user':data})
+    else:
+        alldata=Query.objects.filter(stu_email=em)
+        use_data=Student.objects.get(stu_email=em)
+        email1=use_data.stu_email
+        name1=use_data.stu_name
+        contact1=use_data.stu_contact 
+        password1=use_data.stu_password
+        data={
+            'nm':name1,
+            'em':email1,
+            'con':contact1,
+            'pas':password1
+            }
+        return render(request,'display.html',{'data':alldata,'user':data})
+
 def logout(request):
     return render(request,'home.html')
   
