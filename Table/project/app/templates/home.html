@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Home</h1>
+    <!-- <form action="{% url 'userdata' %}" method="post">
+        {% csrf_token %}
+        First Name : <input type="text" name="fname"><br><br>
+        Last Name : <input type="text" name="lname"><br><br>
+        Email : <input type="email" name="email"><br><br>
+        Car Name : <input type="text" name="carnm"><br><br>
+        Amount : <input type="text" name="cpay"><br><br>
+        Address : <input type="text" name="add"><br><br>
+        Pick Date Time : <input type="text" name="pick"><br><br>
+        Drop Date Time : <input type="text" name="drop"><br><br>
+        Feedback : <input type="text" name="feed"><br><br>
+        <button type="submit">Submit</button><br><br>
+    </form><br><br> -->
+    <form action="{% url 'data' %}" method="post">
+        {% csrf_token %}
+        Name : <input type="text" name="nm"><br>
+        Age : <input type="text" name="age"><br>
+        Contact : <input type="text" name="con"><br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
