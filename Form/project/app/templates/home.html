@@ -6,14 +6,16 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="">
+    <h1>{{msg}}</h1>
+    <form action="{% url 'userdata' %}" method="post">
         {% csrf_token %}
-        {{user}}
+        {{context.user}}
         <button type="submit">Submit</button>
     </form>
-    <form action="">
+    ------------------------------------------
+    <form action="{% url 'profiledata' %}" method="post">
         {% csrf_token %}
-        {{context}}
+        {{context.profile}}
         <button type="submit">Submit</button>
     </form>
 </body>

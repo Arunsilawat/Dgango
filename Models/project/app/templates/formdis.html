@@ -6,14 +6,15 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="#">
+    <form action="">
         {% csrf_token %}
         {{user}}
         <button type="submit">Submit</button>
     </form>
-    <form action="#">
+    ------------------------------------------
+    <form action="">
         {% csrf_token %}
-        {{context}}
+        {{profile}}
         <button type="submit">Submit</button>
     </form>
 </body>
