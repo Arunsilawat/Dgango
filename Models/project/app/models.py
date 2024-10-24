@@ -34,3 +34,11 @@ class User(models.Model):
     contact=models.IntegerField()
     aadhar_no=models.OneToOneField(Aadhar,on_delete=models.CASCADE)
     departmentname=models.ForeignKey(Department,on_delete=models.CASCADE,null=True)
+
+
+quali=((1,"M.Tech"),(2,"B.Tech"),(3,"BCA"),(4,"BBA"))
+class Profile(models.Model):
+    name=models.OneToOneField(User,on_delete=models.CASCADE)
+    quali=models.CharField(max_length=50,choices=quali)
+    exp=models.IntegerField()
+    skill=models.CharField(max_length=50)

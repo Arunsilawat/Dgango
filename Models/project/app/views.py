@@ -2,6 +2,7 @@ from django.shortcuts import render
 from.models import Student
 from.models import Query
 
+from .forms import UserForm,ProfileForm
 # Create your views here.
 def home(request):
     return render(request,'home.html')
@@ -279,3 +280,10 @@ def update(request,pk):
             'query':query
             }
         return render(request,'display.html',{'data':alldata,'user':data})
+
+
+def formdis(request):
+    context={}
+    context['user']=UserForm
+    context['profile']=ProfileForm
+    return render (request,'formdis.html',context )
