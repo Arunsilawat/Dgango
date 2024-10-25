@@ -22,5 +22,4 @@ urlpatterns = [
     path('logout/',views.logout, name='logout'),
     path('edit/<int:pk>',views.edit, name='edit'),
     path('update/<int:pk>',views.update, name='update'),
-    path('formdis',views.formdis, name='formdis'),
  ]
