@@ -17,6 +17,8 @@
         {% csrf_token %}
         {{context.profile}}
         <button type="submit">Submit</button>
-    </form>
+    </form><br>
+    <a href="{% url 'complatedata' %}"><button>Complate Data</button></a>
+
 </body>
 </html>
