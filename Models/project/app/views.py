@@ -281,9 +281,4 @@ def update(request,pk):
             }
         return render(request,'display.html',{'data':alldata,'user':data})
 
-
-def formdis(request):
-    context={}
-    context['user']=UserForm
-    context['profile']=ProfileForm
-    return render (request,'formdis.html',context )
+ 
