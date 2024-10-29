@@ -2,7 +2,6 @@ from django.shortcuts import render
 from.models import Student
 from.models import Query
 
-from .forms import UserForm,ProfileForm
 # Create your views here.
 def home(request):
     return render(request,'home.html')
