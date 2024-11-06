@@ -41,5 +41,4 @@ def student_detail(req,pk):
     return JsonResponse(serializer.data,safe=False)
     # first argument of JsonResponse should be a dict, otherwise set safe=False
 
-def home(request):
-    return render(request,'home.html')  
+ 
